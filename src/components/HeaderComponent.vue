@@ -11,7 +11,7 @@
       </div>
       <div class="header-user">
         <div class="user-info" v-if="isLoggedIn">
-          <div class="avatar" :src="logo""></div>
+          <div class="avatar" :src="logo"></div>
           <h3 class="username">{{ full_name }}</h3>
         </div>
         <div class="header-devider" v-if="isLoggedIn"></div>
