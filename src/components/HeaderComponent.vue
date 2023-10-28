@@ -11,7 +11,7 @@
       </div>
       <div class="header-user">
         <div class="user-info" v-if="isLoggedIn">
-          <div class="avatar" :style="{ backgroundColor: avatarColor }"></div>
+          <div class="avatar" :src="logo""></div>
           <h3 class="username">{{ full_name }}</h3>
         </div>
         <div class="header-devider" v-if="isLoggedIn"></div>
@@ -25,19 +25,17 @@
 import { store } from '@/store';
 import { computed } from 'vue';
 
-function getRandomVibrantColor() {
-  const hue = Math.floor(Math.random() * 360);
-  const saturation = 70 + Math.floor(Math.random() * 30);
-  const lightness = 50 + Math.floor(Math.random() * 10);
-
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-}
 
 export default {
   data() {
     return {
-      avatarColor: getRandomVibrantColor(),
+      avatarColor: '#8645E8',
     };
+  },
+  computed: {
+    logo() {
+      return "https://i.pinimg.com/280x280_RS/83/de/c4/83dec429f83b4fe382e62e32b76aba09.jpg";
+    },
   },
   setup() {
     const user = computed(() => store.state.user);
