@@ -1,9 +1,10 @@
 <template>
-  <div class="song-filter">
-    <div class="song-filter__content">
-      <h1 class="song-filter__title">Filter</h1>
-      <p class="song-filter__text">Filter the songs by entering a search term below.</p>
-      <input class="song-filter__input" type="text" v-model="searchTerm" placeholder="Search term" />
+  <div class="sort-container">
+    <p>Sort by: </p>
+    <div>
+      <button class="sort-button" :class="{ 'sort-button-active': sortBy === 'none' }" @click="setSortBy('none')">None</button>
+      <button class="sort-button" :class="{ 'sort-button-active': sortBy === 'name' }" @click="setSortBy('name')">Name</button>
+      <button class="sort-button" :class="{ 'sort-button-active': sortBy === 'artist' }" @click="setSortBy('artist')">Artist</button>
     </div>
   </div>
 </template>
@@ -13,13 +14,14 @@ export default {
   name: "SongFilterComponent",
   data() {
     return {
-      searchTerm: ""
+      sortBy: "none",
     };
   },
-  watch: {
-    searchTerm() {
-      this.$emit("search-term-changed", this.searchTerm);
-    }
-  }
+  methods: {
+    setSortBy(sortBy) {
+      this.sortBy = sortBy;
+      this.$emit("sort-changed", sortBy);
+    },
+  },
 };
 </script>
